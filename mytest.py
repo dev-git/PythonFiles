@@ -10,7 +10,7 @@ import model
 
 #import glob
 
-KEY = '301cd5e3c7654df08d21084b3a9332c3'  # Replace with a valid Subscription Key here.
+KEY = ''  # Replace with a valid Subscription Key here.
 CF.Key.set(KEY)
 
 BASE_URL = 'https://australiaeast.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
