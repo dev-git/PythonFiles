@@ -24,8 +24,8 @@ os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
 # DynamoDb
-AWS_ACCESS_KEY = 'AKIAX6OXTITVPA6III6Q'
-AWS_SECRET_ACCESS = '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'
+AWS_ACCESS_KEY = 
+AWS_SECRET_ACCESS = 
 TABLE_NAME = 'sensordata'
 
 # Software SPI configuration:
