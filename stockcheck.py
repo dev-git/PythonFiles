@@ -1,0 +1,47 @@
+import requests
+import json
+
+headers1 = {
+    'authority': 'www.bunnings.co.nz',
+    'accept': 'application/json, text/plain, */*',
+    'requestverificationtoken': 'sgqAohJ2ZTxYQco1xvL6rUutLv1q2fLgPaLgsMQQq-wz9nBWLElI1eLWfqas1ojyDraDD72zV7YPV9DGosfZND9OLfw1',
+    'dnt': '1',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-dest': 'empty',
+    'referer': 'https://www.bunnings.co.nz/mimosa-220-x-90cm-aluminium-lava-8-seater-dining-table_p0022851',
+    'accept-language': 'en-US,en;q=0.9',
+    'cookie': 'SC_ANALYTICS_GLOBAL_COOKIE=9f1f03031fdb49b4a67228643dfd0d69|True; Bunnings.IsPickUpOfLiveItemsTrialStore=False; Bunnings.IsDeliveryLiveItemTrialStore=False; Bunnings.IsRatingsAndReviewsTrialStore=False; Bunnings.NearestStoreDisableOnlineOrderFulfilment=False; Bunnings.Region=Auckland; Bunnings.NearestStoreIsRemote=False; Bunnings.IsStage4AffectedStore=False; ANONYMOUS_USER_ID={551a2afd-b2c6-443e-9d49-33710a786253}; _minicart=VisitorId={551a2afd-b2c6-443e-9d49-33710a786253}; kampyle_userid=2fb2-47c1-9420-22b6-b71d-cd34-37c5-345e; Bunnings.UserType=RetailUser; ASP.NET_SessionId=gxald42dojl4kypb1aehljiv; __RequestVerificationToken=ET2Tp8dfEhlTqNUzMzhVvIC8-Lqhnzr-Elue-2etE3JZMqES12nxi8vWkmD2kMHeaceL15qhqN_4KoBHFkjlMPjXoA41; Bunnings.Device=default; RequestVerificationToken=D2vWsYHjPPiqDaZRL9e3wuL2_rLuyIsWWJ0uk11S8wiPIAwoRIsfzZTx5oyZgrn7MogF2rMQ_BHsgwPTbVtAAQj59c81; Bunnings.ShoppingCartHasItems=False; __cfduid=d8ab59494b564578498a9f09c5e7e5d921605927215; DisableRightCouponAdware=acebook sumorobo 5386b_643c_; _gcl_au=1.1.168356872.1605927218; _ga=GA1.3.927229397.1605927218; Bunnings.GeolocationStatus=prompt; _fbp=fb.2.1605927218559.1865269641; cd_user_id=175e8b8b094a40-021154617dfb74-c791e37-144000-175e8b8b095a6f; __qca=P0-811852817-1605927219252; Bunnings.IsMarketLinkProduct=false; HasSelectedStore=True; Bunnings.CartItemCountCollection=0; Bunnings.NearestStorePostcode=0600; Bunnings.NearestStoreID=58; Bunnings.NearestStoreName=New Lynn; Bunnings.NearestStoreNumber=9502; Bunnings.Location=-36.909373, 174.67762; PreviousSelectedStoreInfo=%7B%22PreviousSelectedStoreID%22%3A61%2C%22PreviousSelectedStoreName%22%3A%22Grey%20Lynn%22%2C%22PreviousSelectedStoreRegion%22%3A%22Auckland%22%2C%22PreviousSelectedStorePostcode%22%3A%221021%22%2C%22PreviousSelectedSuburbID%22%3A0%2C%22PreviousSelectedStoreNumber%22%3A%229518%22%2C%22PreviousSelectedStoreType%22%3A%22Warehouse%22%7D; Bunnings.NearbyStores=%5B%7B%22StoreID%22%3A39%2C%22StoreName%22%3A%22Mt%20Roskill%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%221041%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229510%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A61%2C%22StoreName%22%3A%22Grey%20Lynn%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%221021%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229518%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A46%2C%22StoreName%22%3A%22Mt%20Wellington%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%221741%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229493%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A47%2C%22StoreName%22%3A%22Glenfield%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%220624%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229491%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A29%2C%22StoreName%22%3A%22Constellation%20Drive%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%220632%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229470%22%2C%22StoreType%22%3A%22Warehouse%22%7D%5D; ApplicationGatewayAffinity=871035a1435f4e192713b5a75ec55ac5340e2bd2320ea92bd29400cbb41176e4; ApplicationGatewayAffinityCORS=871035a1435f4e192713b5a75ec55ac5340e2bd2320ea92bd29400cbb41176e4; _gid=GA1.3.1420712381.1606519570; kampyleUserSession=1606519571188; kampyleUserSessionsCount=4; Bunnings.CartItemCountDelivery=3; Bunnings.CartError=Please%20remove%20any%20unavailable%20items%20from%20your%20cart%20in%20order%20to%20proceed.; Bunnings.TotalAmount=1043; kampyleSessionPageCounter=3; _gat_UA-6930764-1=1; rr_rcs=eF4NyLkRgDAMBMDEEb3cjGR9Vge0gREBARlQP2y4rT37WkekqytmRYdyKXK6YWObVMHjn-V677OIQwTs5Cac1FMIwwD-AJIHEV0; _dc_gtm_UA-6930764-1=1',
+}
+
+response1 = requests.get('https://www.bunnings.co.nz/api/v1/store/9502/0022851', headers=headers1)
+#response1 = requests.get('https://www.bunnings.co.nz/api/v1/store/9502/0109379', headers=headers1)
+result1 = response1.text.encode('utf8')
+row = json.loads(result1)
+print('New Lynn    ' + row["StockStatus"][0]["Message"])
+
+#https://curl.trillworks.com/#python
+headers = {
+    'authority': 'www.bunnings.co.nz',
+    'accept': 'application/json, text/plain, */*',
+    'requestverificationtoken': 'sgqAohJ2ZTxYQco1xvL6rUutLv1q2fLgPaLgsMQQq-wz9nBWLElI1eLWfqas1ojyDraDD72zV7YPV9DGosfZND9OLfw1',
+    'dnt': '1',
+    'accept-language': 'en-US,en;q=0.9',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-dest': 'empty',
+    'referer': 'https://www.bunnings.co.nz/mimosa-220-x-90cm-aluminium-lava-8-seater-dining-table_p0022851',
+    'cookie': 'SC_ANALYTICS_GLOBAL_COOKIE=9f1f03031fdb49b4a67228643dfd0d69|True; Bunnings.IsPickUpOfLiveItemsTrialStore=False; Bunnings.IsDeliveryLiveItemTrialStore=False; Bunnings.IsRatingsAndReviewsTrialStore=False; Bunnings.NearestStoreDisableOnlineOrderFulfilment=False; Bunnings.Region=Auckland; Bunnings.NearestStoreIsRemote=False; Bunnings.IsStage4AffectedStore=False; ANONYMOUS_USER_ID={551a2afd-b2c6-443e-9d49-33710a786253}; _minicart=VisitorId={551a2afd-b2c6-443e-9d49-33710a786253}; kampyle_userid=2fb2-47c1-9420-22b6-b71d-cd34-37c5-345e; Bunnings.UserType=RetailUser; ASP.NET_SessionId=gxald42dojl4kypb1aehljiv; __RequestVerificationToken=ET2Tp8dfEhlTqNUzMzhVvIC8-Lqhnzr-Elue-2etE3JZMqES12nxi8vWkmD2kMHeaceL15qhqN_4KoBHFkjlMPjXoA41; Bunnings.Device=default; RequestVerificationToken=D2vWsYHjPPiqDaZRL9e3wuL2_rLuyIsWWJ0uk11S8wiPIAwoRIsfzZTx5oyZgrn7MogF2rMQ_BHsgwPTbVtAAQj59c81; Bunnings.ShoppingCartHasItems=False; __cfduid=d8ab59494b564578498a9f09c5e7e5d921605927215; DisableRightCouponAdware=acebook sumorobo 5386b_643c_; _gcl_au=1.1.168356872.1605927218; _ga=GA1.3.927229397.1605927218; Bunnings.GeolocationStatus=prompt; _fbp=fb.2.1605927218559.1865269641; cd_user_id=175e8b8b094a40-021154617dfb74-c791e37-144000-175e8b8b095a6f; __qca=P0-811852817-1605927219252; Bunnings.IsMarketLinkProduct=false; HasSelectedStore=True; Bunnings.CartItemCountCollection=0; Bunnings.NearestStorePostcode=0600; Bunnings.NearestStoreID=58; Bunnings.NearestStoreName=New Lynn; Bunnings.NearestStoreNumber=9502; Bunnings.Location=-36.909373, 174.67762; PreviousSelectedStoreInfo=%7B%22PreviousSelectedStoreID%22%3A61%2C%22PreviousSelectedStoreName%22%3A%22Grey%20Lynn%22%2C%22PreviousSelectedStoreRegion%22%3A%22Auckland%22%2C%22PreviousSelectedStorePostcode%22%3A%221021%22%2C%22PreviousSelectedSuburbID%22%3A0%2C%22PreviousSelectedStoreNumber%22%3A%229518%22%2C%22PreviousSelectedStoreType%22%3A%22Warehouse%22%7D; Bunnings.NearbyStores=%5B%7B%22StoreID%22%3A39%2C%22StoreName%22%3A%22Mt%20Roskill%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%221041%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229510%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A61%2C%22StoreName%22%3A%22Grey%20Lynn%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%221021%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229518%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A46%2C%22StoreName%22%3A%22Mt%20Wellington%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%221741%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229493%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A47%2C%22StoreName%22%3A%22Glenfield%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%220624%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229491%22%2C%22StoreType%22%3A%22Warehouse%22%7D%2C%7B%22StoreID%22%3A29%2C%22StoreName%22%3A%22Constellation%20Drive%22%2C%22StoreRegion%22%3A%22Auckland%22%2C%22StorePostcode%22%3A%220632%22%2C%22SuburbID%22%3A0%2C%22StoreNumber%22%3A%229470%22%2C%22StoreType%22%3A%22Warehouse%22%7D%5D; ApplicationGatewayAffinity=871035a1435f4e192713b5a75ec55ac5340e2bd2320ea92bd29400cbb41176e4; ApplicationGatewayAffinityCORS=871035a1435f4e192713b5a75ec55ac5340e2bd2320ea92bd29400cbb41176e4; _gid=GA1.3.1420712381.1606519570; Bunnings.CartItemCountDelivery=3; Bunnings.CartError=Please%20remove%20any%20unavailable%20items%20from%20your%20cart%20in%20order%20to%20proceed.; Bunnings.TotalAmount=1043; rr_rcs=eF4NyLkRgDAMBMDEEb3cjGTrcwe0gRABARlQP2y4rT37WodPExNkeYdwCWaaYmNNKuf4Z7ne-yxiHwNsZDp6TKMQhAL8AZKGEWo; kampyleUserSession=1606532897237; kampyleUserSessionsCount=5; kampyleSessionPageCounter=1',
+}
+
+response = requests.get('https://www.bunnings.co.nz/api/v1/store/9502/nearest/5/0022851', headers=headers)
+result = response.text.encode('utf8')
+rows = json.loads(result)
+#print(rows)
+
+for count in range(5):
+    storeName = rows[count]["StoreInfo"]["StoreName"]
+    stockStatus = rows[count]["StockStatus"][0]["Message"]
+    print(storeName[:30] + '   ' + stockStatus)
